@@ -3,8 +3,7 @@ export async function initProductOverviewPage() {
     // Event listener for the button
     const seeProductsButton = document.getElementById("see-products");
   seeProductsButton.addEventListener("click", fetchAndDisplayProducts);
-//til Simone
-  
+//til Simone 
 }
 
 
@@ -30,7 +29,7 @@ async function fetchAndDisplayProducts() {
 
       productDiv.innerHTML = `
         <div class="card">
-          <img src="${product.imageUrl}" class="card-img-top" alt="${product.name}" style="width:100%; height:auto;">
+          <img src="${product.imageUrls[0]}" class="card-img-top" alt="${product.name}" style="width:100%; height:auto;">
           <div class="card-body">
             <h5 class="card-title">${product.name}</h5>
             <p class="card-text">Price: $${product.price.toFixed(2)}</p>

@@ -137,7 +137,7 @@ async function populateCategories() {
   const categoryholder = document.getElementById("category-holder")
   const categories = await fetch(API_URL + "/categories").then(res => res.json())
   categories.forEach(element => {
-    categoryholder.innerHTML+=`<li><a class="dropdown-item" href="/product-overview/${element.name} " style="color:darkgray" data-navigo>${element.name}</a></li>
+    categoryholder.innerHTML+=`<li><a class="dropdown-item" href="/product-overview/${element.name}" style="color:darkgray" data-navigo>${element.name}</a></li>
     `
   });
 

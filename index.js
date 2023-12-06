@@ -34,7 +34,7 @@ window.addEventListener("load", async () => {
   );
 
   adjustForMissingHash();
-
+  adjustNavbarOnScroll();
   const router = new Navigo("/", { hash: true });
   //Not especially nice, BUT MEANT to simplify things. Make the router global so it can be accessed from all js-files
   window.router = router;
@@ -120,13 +120,13 @@ searchBtn.addEventListener("click", function () {
 });
 
 function adjustNavbarOnScroll() {
-  if (window.scrollY === 0) {
+  if (window.scrollY === 0 && window.innerWidth > 768) {
     document.querySelector(".navbar").classList.remove("navbar-shrink");
     document
       .querySelector(".container-fluid")
       .classList.remove("container-fluid-shrink");
   }
-  else if (window.scrollY > 90) {
+  else if (window.scrollY > 90 || window.innerWidth <= 768) {
     document.querySelector(".navbar").classList.add("navbar-shrink");
     document
       .querySelector(".container-fluid")
@@ -137,7 +137,7 @@ async function populateCategories() {
   const categoryholder = document.getElementById("category-holder")
   const categories = await fetch(API_URL + "/categories").then(res => res.json())
   categories.forEach(element => {
-    categoryholder.innerHTML+=`<li><a class="dropdown-item" href="/product-overview/${element.name} " style="color:darkgray" data-navigo>${element.name}</a></li>
+    categoryholder.innerHTML += `<li><a class="dropdown-item" href="/product-overview/${element.name}" style="color:darkgray" data-navigo>${element.name}</a></li>
     `
   });
 

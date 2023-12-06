@@ -139,7 +139,6 @@ async function populateCategories() {
   categories.forEach(element => {
     categoryholder.innerHTML+=`<li><a class="dropdown-item" href="/product-overview/${element.name} " style="color:darkgray" data-navigo>${element.name}</a></li>
     `
-
   });
 
 }

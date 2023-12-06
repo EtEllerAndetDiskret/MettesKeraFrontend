@@ -3,9 +3,8 @@ import { API_URL, SAS_TOKEN } from "../../settings.js";
 export async function initProductOverviewPage(searchTerm) {
   console.log("Search term on product overview:", searchTerm);
 
-
   if (searchTerm) {
-    const searchResults = await getSearchItems(searchTerm);
+    const searchResults = await getSearchItems(searchTerm.toLowerCase());
     fetchAndDisplayProducts(searchResults);
   } else {
     fetchAndDisplayProducts()

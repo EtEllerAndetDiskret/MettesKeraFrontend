@@ -58,16 +58,16 @@ window.addEventListener("load", async () => {
         renderTemplate(templateProductPage, "content");
         initProductPage(id);
       },
-      "/product-overview/:searchTerm": (params) => {
+      "/product-overview/:searchTerm": async (params) => {
         //here the searchterm is required
         const searchTerm = params.data.searchTerm;
         renderTemplate(templateOverviewPage, "content");
-        initProductOverviewPage(searchTerm);
+        await initProductOverviewPage(searchTerm);
       },
-      "/product-overview/": () => {
+      "/product-overview/": async () => {
         //The reason for having two product-overview is to avoid the "required" of the params on top
         renderTemplate(templateOverviewPage, "content");
-        initProductOverviewPage();
+        await initProductOverviewPage();
       },
       "/create-product": () => {
         renderTemplate(templateCreationForm, "content");

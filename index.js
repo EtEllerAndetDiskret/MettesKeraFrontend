@@ -16,8 +16,8 @@ import { initProductOverviewPage } from "./pages/product-overview/product-overvi
 import { initCreationform } from "./pages/productCreation-Form/product-Creation-form.js";
 //If token existed, for example after a refresh, set UI accordingly
 const token = localStorage.getItem("token");
+adjustNavbarOnScroll();
 toggleLoginStatus(token);
-
 window.addEventListener("load", async () => {
 	populateCategories();
 	const templateSignup = await loadTemplate("./pages/signup/signup.html");
@@ -115,12 +115,12 @@ searchBtn.addEventListener("click", function () {
 });
 
 function adjustNavbarOnScroll() {
-	if (window.scrollY === 0) {
+	if (window.scrollY === 0 && window.innerWidth.valueOf() > 768) {
 		document.querySelector(".navbar").classList.remove("navbar-shrink");
 		document
 			.querySelector(".container-fluid")
 			.classList.remove("container-fluid-shrink");
-	} else if (window.scrollY > 90) {
+	} else if (window.scrollY > 90 || window.innerWidth.valueOf() <= 768) {
 		document.querySelector(".navbar").classList.add("navbar-shrink");
 		document
 			.querySelector(".container-fluid")
